@@ -1,12 +1,11 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from lists.models import Item
 
 
-class Homepage(ListView):
-    model = Item
+class Homepage(TemplateView):
     template_name = 'home.html'
 
     def post(self, request, *args, **kwargs):
@@ -19,4 +18,3 @@ class Homepage(ListView):
 
 class TodoList(ListView):
     model = Item
-    template_name = 'home.html'
