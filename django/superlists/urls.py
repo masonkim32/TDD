@@ -22,6 +22,7 @@ from lists import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Homepage.as_view(), name='home'),
+    path('lists/new', views.NewList.as_view(), name='new_todo_list'),
     path('lists/the-only-list-in-the-world/',
          views.TodoList.as_view(),
          name='todo_list'),
