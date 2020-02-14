@@ -1,16 +1,22 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.views.generic import ListView
 
 from lists.models import Item
 
 
-def homepage(request):
-    if request.method == 'POST':
+class Homepage(ListView):
+    model = Item
+    template_name = 'home.html'
+
+    def post(self, request, *args, **kwargs):
         new_item_text = request.POST['item_text']
         Item.objects.create(text=new_item_text)
 
-        home_url = reverse('home')
-        return redirect(to=home_url)
+        list_url = reverse('todo_list')
+        return redirect(to=list_url)
 
-    items = Item.objects.all()
-    return render(request, 'home.html', {'items': items})
+
+class TodoList(ListView):
+    model = Item
+    template_name = 'home.html'
