@@ -28,7 +28,7 @@ class NewList(View):
         new_item_text = request.POST['item_text']
         Item.objects.create(text=new_item_text, list=new_list)
 
-        list_url = reverse('todo_list', kwargs={'pk': new_list.id})
+        list_url = reverse('lists:todo_list', kwargs={'pk': new_list.id})
         return redirect(to=list_url)
 
 
@@ -39,5 +39,5 @@ class AddItem(View):
         new_item_text = request.POST['item_text']
         Item.objects.create(text=new_item_text, list=list_)
 
-        list_url = reverse('todo_list', kwargs={'pk': list_.id})
+        list_url = reverse('lists:todo_list', kwargs={'pk': list_.id})
         return redirect(to=list_url)
