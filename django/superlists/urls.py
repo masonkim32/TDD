@@ -20,6 +20,6 @@ import lists.urls
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', include(lists.urls, namespace='lists')),
 ]
